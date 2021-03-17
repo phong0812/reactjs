@@ -3,22 +3,22 @@ import './App.css';
 import './form.scss';
 import SignUp from './components/form/sign-up';
 import SignIn from './components/form/sign-in';
-import Tab from './components/form/tabs';
+import TabGroup from './components/form/tab-group';
 
 function App() {
   return (
     <div className="form">
-      
-      <ul className="tab-group">
-        <Tab class='tab' link='#signup' buttonName='Sign Up'></Tab>
-        <Tab class='tab' link='#login' buttonName='Log In'></Tab>
-      </ul>
+    <TabGroup>
+        <li label ="Sign Up" class="tab active"><a href="#signup">Sign Up</a></li>
+        <li label ="Log In" class="tab"><a href="#login">Log In</a></li>
+
+      </TabGroup>      
       
       <div className="tab-content">
-        <SignUp></SignUp>
+      <SignUp></SignUp>
 
-        <SignIn></SignIn>
-               
+    <SignIn></SignIn>
+
       </div>      
     </div>
   );
