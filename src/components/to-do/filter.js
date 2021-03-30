@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../form/input";
+import Link from 'react-router-dom';
 
 class Filter extends React.Component {
     constructor(props) {
@@ -13,6 +14,12 @@ class Filter extends React.Component {
     render() {
         return (
             <div>
+                {/* <Link to ="/filter?filter=all">
+                </Link>
+                <Link to ="/filter?filter=complete">
+                </Link>
+                <Link to ="/filter?filter=unComplete">
+                </Link> */}
                 <input type="radio" id="contactChoice1"
                        name="contact" value="1" onClick={() => this.props.handleFilter(1)}/>
                 <label htmlFor="contactChoice1">All</label>

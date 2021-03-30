@@ -3,6 +3,7 @@ import Input from './input';
 import PropTypes from 'prop-types';
 import Button from './button';
 import Submit from './submit';
+import {Link, Redirect} from 'react-router-dom';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -40,15 +41,13 @@ class SignUp extends React.Component {
     msg += 'Password: ';
     msg += this.state.password;
 
-    alert(msg);
-    return;
+    return <Redirect to="/dashboard" />;
   }
   render() {
     return(
     <div id="signup">   
               <h1>Sign Up for Free</h1>
               
-              <form action="/" method="post">
               
               <div className="top-row">
                 <div className="field-wrap">
@@ -80,9 +79,10 @@ class SignUp extends React.Component {
                 <Input type="password" required="required" value={this.state.password} onChange={this.handleChange} name="password"/>
               </div>
               
-              <Button type="submit" className="button button-block" text="Get Started" click={this.submit}></Button>
+              <Button type="submit" className="button button-block" text="Get Started" click={this.submit}>
+                {/* <Link to="/about">Dashboard</Link> */}
+                </Button>
               
-              </form>
     </div>
     );
   }

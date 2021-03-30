@@ -1,10 +1,20 @@
 import React from "react";
 import List from './list';
 import Add from './add';
-import Input from '../form/input';
 import _map from 'lodash/map';
 import Filter from "./filter";
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    NavLink
+  } from "react-router-dom";
+  import Page1 from '../router/page-1';
+  import Page2 from '../router/page-2';
+  import Page3 from '../router/page-3';
+    
 
 
 class Todo extends React.Component {
@@ -87,13 +97,47 @@ class Todo extends React.Component {
 
     render() {
         return (
+            // <div>
+            //     <Filter handleFilter={this.onChangeFilter}></Filter>
+            //     <div className="list">
+            //         <List list={this.handleFilter()} removeRow={this.removeRow} changeStatus={this.changeStatus}></List>
+            //     </div>
+            //     <Add addItem={item => this.addItem(item)}></Add>
+            // </div>  
+
+            <Router>
             <div>
-                <Filter handleFilter={this.onChangeFilter}></Filter>
-                <div className="list">
-                    <List list={this.handleFilter()} removeRow={this.removeRow} changeStatus={this.changeStatus}></List>
-                </div>
-                <Add addItem={item => this.addItem(item)}></Add>
-            </div>  
+              <ul>
+                <li>
+                <NavLink exact to="/" activeStyle={{background: "red"}}>Home</NavLink>
+                </li>
+                <li>
+                <NavLink to="/about" activeStyle={{background: "red"}}>About</NavLink>
+                </li>
+                <li>
+                <NavLink to="/dashboard" activeStyle={{background: "red"}}>Dashboard</NavLink>
+                </li>
+              </ul>
+        
+              <hr />
+        
+              <Switch>
+                {/* let page1 = useRouteMatch("/");
+                let page2 = useRouteMatch("/about");
+                let page3 = useRouteMatch("/dashboard"); */}
+                <Route exact path="/">
+                  <Page1 />
+                </Route>
+                <Route path="/about">
+                  <Page2 />
+                </Route>
+                <Route path="/dashboard">
+                  <Page3 />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        
         );
     }
 }

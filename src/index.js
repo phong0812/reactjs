@@ -5,11 +5,15 @@ import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { HashRouter } from 'react-router-dom';
+import Routes from './app/routes/index';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <HashRouter basename="todo">
+          <Routes></Routes>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
